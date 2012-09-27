@@ -61,7 +61,7 @@ public class InstrumentForms extends AbstractMojo {
 
     // FIXME: No support for nested forms for now...
     nestedForms = Lists.newArrayList();
-    loader = createPseudoClassLoader();
+    loader = Util.createPseudoClassLoader(project);
 
     instrumentRecursive(formsDirectory);
   }
@@ -88,25 +88,7 @@ public class InstrumentForms extends AbstractMojo {
     }
   }
 
-  /**
-   * Create {@link PseudoClassLoader} based on the resolved dependencies.
-   * @return
-   * @throws MojoFailureException
-   */
-  private PseudoClassLoader createPseudoClassLoader() throws MojoFailureException {
-    List<URL> classpath = Lists.newArrayList();
-    try {
 
-      for (String entry : project.getCompileClasspathElements()) {
-        classpath.add(new URL("file://" + entry));
-      }
-    } catch (DependencyResolutionRequiredException e) {
-      throw new MojoFailureException("Cannot resolve runtime classpath dependency", e);
-    } catch (MalformedURLException e) {
-      throw new MojoFailureException("Cannot resolve runtime classpath dependency", e);
-    }
-    return new PseudoClassLoader(classpath.toArray(new URL[0]));
-  }
 
   private final class Instrumenter extends InstrumentationUtil.FormInstrumenter {
     private MojoExecutionException exception;
