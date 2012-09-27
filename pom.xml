@@ -4,7 +4,7 @@
 
   <groupId>com.guidewire.build</groupId>
   <artifactId>ijinstrument-maven-plugin</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
 
   <name>Plugin to instrument classes using IntelliJ tools</name>
@@ -86,7 +86,7 @@
   <scm>
     <developerConnection>scm:git:git@gh:build/ijinstrument-maven-plugin.git</developerConnection>
     <connection>scm:git://gh/build/ijinstrument-maven-plugin</connection>
-    <tag>ijinstrument-maven-plugin-0.1.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <build>
